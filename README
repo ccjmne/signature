@@ -1,0 +1,18 @@
+TRIM ===========================================================================
+
+    magick original.jpg -trim +repage trimmed.png
+
+REMOVE BACKGROUND ==============================================================
+
+    magick trimmed.png -fuzz 60% -transparent white transparent.png
+
+WHITE ==========================================================================
+
+    magick original.png \
+        -fuzz 60% -transparent white \
+        -fill white -opaque black \
+        -morphology Close Diamond -blur 0x.5 \
+        -trim +repage \
+        white.png
+
+vim: textwidth=80 expandtab shiftwidth=4 smarttab
